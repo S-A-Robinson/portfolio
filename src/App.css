@@ -4,8 +4,8 @@
   flex-direction: column;
   justify-content: center;
   margin: 0;
-  perspective: 40cm;
-  gap: 8px;
+  padding-left: 5vw;
+  perspective: 100vw;
 }
 
 .disc {
@@ -15,7 +15,7 @@
   border-style: solid;
   border-width: 14vw;
   border-color: black;
-  position: absolute;
+  position: fixed;
   top: calc(50vh - 9vw);
   left: 50%;
   transform: translate(-50%);
@@ -43,93 +43,46 @@
 }
 
 .nav-item {
-  font-size: 72px;
+  font-size: 12vw;
+  font-weight: 900;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   list-style: none;
   transform-origin: center left;
-  transform: rotateY(50deg);
-  animation-name: out;
-  animation-duration: 0.2s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-out;
+  transform: rotateY(45deg);
+  animation: out 1s forwards cubic-bezier(0.175, 0.82, 0.165, 1);
   width: fit-content;
-  border-bottom: 2px solid white;
-  padding-left: 8px;
+  color: white;
+  -webkit-text-stroke: 3px white;
+  letter-spacing: .02em;
+  line-height: .9em;
+  cursor: pointer;
 }
 
 .nav-item:hover {
-  animation-name: in;
-  animation-duration: 0.2s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-out;
-}
-
-.nav-item:hover::before {
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  color: rgb(0, 17, 255);
-  overflow: hidden;
-  position: absolute;
-  content: attr(data-text);
-  animation-name: animate;
-  animation-duration: 0.2s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-out;
-  background-color: white;
-  border-bottom: 2px solid white;
-  padding-left: 8px;
-}
-
-.box-front {
-  position: absolute;
-	width: calc(100vw - 100px);
-	height: 0;
-  top: calc(100vh - 100px);;
-  border-bottom: 10px solid white;
-	border-left: 25px solid transparent;
-	border-right: 25px solid transparent;
-}
-
-.box-back {
-  position: absolute;
-	width: calc(100vw - 203px);
-  margin-left: 51px;
-	height: 0;
-  top: calc(100vh - 205px);
-  border-bottom: 10px solid white;
-	border-left: 25px solid transparent;
-	border-right: 25px solid transparent;
-}
-
-@keyframes animate {
-  0%{
-    width: 0;
-  }
-
-  100% {
-    width: 100%;
-  }
+  animation: in 1s forwards cubic-bezier(0.175, 0.82, 0.165, 1);
 }
 
 @keyframes in {
   from {
-    transform: translateX(0) rotateY(50deg);
+    transform: rotateY(45deg);
+    color: white;
   }
 
   to {
-    transform: translateX(30px) rotateY(30deg);
+    transform: rotateY(30deg);
+    color: transparent;
   }
 }
 
 @keyframes out {
   from {
-    transform: translateX(30px) rotateY(30deg);
+    transform: rotateY(30deg);
+    color: transparent;
   }
 
   to {
-    transform: translateX(0) rotateY(50deg);
+    transform: rotateY(45deg);
+    color: white;
   }
 }
 

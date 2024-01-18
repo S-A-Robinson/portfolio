@@ -1,10 +1,9 @@
 import './App.css';
 
 function App() {
+
   return (
     <div className="app">
-      <span className='box-back'></span>
-      <span className='box-front'></span>
       <ul className='nav-list' data-text='HOME'>
         <li className='nav-item' data-text='HOME'>
           HOME
@@ -19,7 +18,7 @@ function App() {
           CONTACT
         </li>
       </ul>
-      <div className='disc'></div>
+      {/* <div className='disc'></div> */}
     </div>
   );
 }
