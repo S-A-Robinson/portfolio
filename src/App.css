@@ -1,32 +1,47 @@
-.nav-list {
-  height: 100vh;
+.page-container {
+  perspective: 100vw;
+  perspective-origin: 50%;
+  transform-style: preserve-3d;
+}
+
+.nav-list-container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
+  width: 100vw;
+  transform-style: preserve-3d;
+}
+
+.nav-list {
+  width: 95%;
+  height: 100vh;
   margin: 0;
   padding-left: 5vw;
-  perspective: 100vw;
+  transform-style: preserve-3d;
 }
 
 .disc {
-  width: 2vw;
-  height: 2vw;
+  width: 2.5vw;
+  height: 2.5vw;
   border-radius: 50%;
   border-style: solid;
-  border-width: 14vw;
+  border-width: 17.5vw;
   border-color: black;
   position: fixed;
-  top: calc(50vh - 9vw);
-  left: 50%;
-  transform: translate(-50%);
+  top: 50%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  animation-name: insert-disc;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 
 .disc::after {
-  width: 2vw;
-  height: 2vw;
+  width: 2.5vw;
+  height: 2.5vw;
   border-radius: 50%;
   border-style: solid;
-  border-width: 4vw;
+  border-width: 5vw;
   border-color: white;
   position: absolute;
   top: -200%;
@@ -35,20 +50,31 @@
   content: '';
 }
 
-.disc:hover {
-  animation-name: insert-disc;
-  animation-duration: 2s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
+.disc-tray {
+  width: 40vw;
+  height: 5px;
+  border: 2px solid white;
+  position: fixed;
+  top: 90%;
+  left: 75%;
+  transform: translate(-50%);
+  background-color: white;
+  animation: open-disc-tray 1s ease-out;
+}
+
+.nav-item-container {
+  list-style: none;
+  transform-style: preserve-3d;
+  cursor: pointer;
 }
 
 .nav-item {
   font-size: 12vw;
   font-weight: 900;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  list-style: none;
   transform-origin: center left;
   transform: rotateY(45deg);
+  transform-style: preserve-3d;
   animation: out 1s forwards cubic-bezier(0.175, 0.82, 0.165, 1);
   width: fit-content;
   color: white;
@@ -56,6 +82,8 @@
   letter-spacing: .02em;
   line-height: .9em;
   cursor: pointer;
+  background-color: red;
+  text-decoration: none;
 }
 
 .nav-item:hover {
@@ -88,14 +116,28 @@
 
 @keyframes insert-disc {
   0% {
-    transform: translate(-50%) translateY(0);
+    transform: translate(-50%, 0);
   }
 
-  40% {
-    transform: translate(-50%) translateY(200px);
+  30% {
+    transform: translate(-50%, 5%);
+  }
+
+  35% {
+    transform: translate(-50%, 10%);
   }
 
   100% {
-    transform: translate(-50%) translateY(1000px);
+    transform: translate(-50%, 9%);
+  }
+}
+
+@keyframes open-disc-tray {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 40vw;
   }
 }
